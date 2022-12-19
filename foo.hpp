@@ -18,7 +18,7 @@ std::vector< char > foo(std::list< Human >& people)
         else {
             ret_v[i] = 'y';
         }
-        i++
+        i++;
     });
 
     return ret_v;
