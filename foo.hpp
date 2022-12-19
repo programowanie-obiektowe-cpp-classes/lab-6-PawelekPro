@@ -9,17 +9,7 @@
 std::vector< char > foo(std::list< Human >& people)
 {
     std::vector< char > ret_v(people.size());
-    std::for_each(people.rbegin(), people.rend(), [&](auto& a) {
-        static int i = 0;
-        a.birthday();
-        if (a.isMonster()) {
-            ret_v[i] = 'n';
-        }
-        else {
-            ret_v[i] = 'y';
-        }
-        i++;
-    });
+    std::transform(people.begin(), people.end(), ret_v.rbegin(), [](Human& human){human.birthday(); char tmp = human.isMonster() ? 'n': 'y'; return tmp;});
 
     return ret_v;
 }
